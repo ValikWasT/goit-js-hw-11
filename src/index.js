@@ -42,6 +42,13 @@ function onLoadMoreBtnClick() {
         );
         refs.loadMore.classList.add('is-hidden');
       }
+      const { height: cardHeight } = document
+        .querySelector('.gallery')
+        .firstElementChild.getBoundingClientRect();
+      window.scrollBy({
+        top: cardHeight * 2,
+        behavior: 'smooth',
+      });
     })
     .catch(error => console.log(error));
 }
@@ -101,3 +108,10 @@ function onSuccess(r) {
   refs.gallery.insertAdjacentHTML('beforeend', photosToGallery);
   lightbox.refresh();
 }
+
+// const { height: cardHeight } = document
+//   .querySelector('.gallery')
+//   .firstElementChild.getBoundingClientRect();
+
+// const cardHeight = refs.gallery.firstElementChild;
+// console.log(cardHeight);
